@@ -1,3 +1,6 @@
 django
 djangorestframework
 environs
+google-api-python-client
+google-auth-oauthlib
+google-auth-httplib2
