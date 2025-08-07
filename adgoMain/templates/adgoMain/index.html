@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><h1>Adgorithm | Campaign Assistant for Creators</title></h1>
+  <link rel="stylesheet" href="styles.css"/>
+
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul class="nav-links">
+        <li>Welcome</li>
+        <li>Dashboard</li>
+        <li>Platforms</li>
+        <li>Adgorithm</li>
+        <li>AI Assistant</li>
+        <li>ROI & Earning Tracker</li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro" data-aos="fade-up">
+      <h2>Launching your success </h2>
+      <p>
+        Gain access to financial guidance,plan and budget campaigns effectively,create engaging content,and protect your digital identity all in one secure platform designed for creators like you.
+      </p>
+      <button onclick="getStarted()">Get Started</button>
+    </section>
+
+    <section class="main-image" data-aos="zoom-in">
+      <img src="https://media.istockphoto.com/id/1215738762/photo/young-female-influencer-creating-content.jpg?s=612x612&w=0&k=20&c=m_rkO_TQlfVwzhrAPa7UAAArB1Zt1_8mbyvL0OblIXY=" alt="Content Creator">
+      <p class="credit">>
+    </section>
+
+    <section class="about" data-aos="fade-up">
+      <h3>Adgo and Stategy assistant </h3>
+      <p>
+      This platform is a smart,secure digital campaign assistant designed for content creators.It helps you save and budget for campaigns,generate AI-powered content strategies,track expenses and returns,and protect your finances and digital identity with cybersecurity tips 
+      </p>
+      <div class="about-images">
+        <img src="" alt="add pic from unsplash">
+        <img src="" alt="add pic">
+        <img src="" alt="add pic">
+      </div>
+    </section>
+
+    <section class="features" data-aos="fade-up">
+      <h3>Discover Key Features </h3>
+      <div class="features-grid">
+
+        <div>
+          <strong>Budgeting & savings</strong>
+          <img src="" alt="unsplash">
+          <p>Save and budget for upcoming content or business campaigns.</p>
+        </div>
+
+
+        <div>
+          <strong>AI-powered content strategy</strong>
+          <img src="" alt="unsplash">
+          <p>Generate AI-powered content strategies.</p>
+        </div>
+
+
+        <div>
+          <strong>Campaign tracking & ROI</strong>
+          <img src="" alt="unsplash">
+          <p>Track campaign expenses and returns</p>
+        </div>
+
+
+        <div>
+          <strong>Financial & digital security</strong>
+          <img src="" alt="unsplash">
+          <p>Protect your finances and digital identity with cybersecurity tips and scam protection.</p>
+        </div>
+
+
+      </div>
+    </section>
+
+    <section class="winning-content" data-aos="fade-up">
+      <h4>Craft winning content </h4>
+      <p>
+        Use our AI tools to craft creative strategies that resonate with your audience. Create standout posts, stories, and campaigns with personalized guidance.
+      </p>
+    </section>
+
+    <section class="security" data-aos="fade-up">
+      <h4>Financial security for creators </h4>
+      <p>
+        We care about your wellbeing. Get tips to secure your online presence, finances, and reputation. <br>
+        You can build this web app with HTML, CSS, and JavaScript using the ideas above.
+      </p>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+
+    function getStarted() {
+      const user = prompt("Hi User! What's your name?");
+      if (user) {
+        alert(`Welcome, ${user}! To you AI powered digital content creator platform `);
+      } else {
+        alert("No worries! You're always welcome here.");
+      }
+    }
+  </script>
+</body>
+</html>
