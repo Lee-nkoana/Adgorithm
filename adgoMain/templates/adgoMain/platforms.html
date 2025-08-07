@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adgorithm | Campaign Assistant for Creators</title>
+  <link rel="stylesheet" href="styles.css"/>
+
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+<header>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Welcome</a></li>
+
+      <li><a href="dashboard.html">Dashboard</a></li>
+        
+      <li><a href="platforms.html">Platforms</a></li>
+
+      <li><a href="media profile.html">Media Profile</a></li>
+
+     
+
+      </ul>
+    </ul>
+  </header>
+
+  <main>
+    <section class="intro" data-aos="fade-up">
+      <h2>User Social Media Platform </h2>
+      
+      <button onclick="getStarted()">Coose a social media platform!</button>
+    </section>
+
+    <section class="main-image" data-aos="zoom-in">
+      <img src="https://i.pinimg.com/736x/7f/49/37/7f49375f87eeac217b58f602ad48ae2e.jpg" alt="Content Creator">
+      <p class="credit">>
+    </section>
+
+    
+
+    <section class="features" data-aos="fade-up">
+      <h3>Social media platforms </h3>
+      <div class="features-grid">
+
+        <div>
+          <strong>Tiktok</strong>
+          <img src="https://p16-va-tiktok.ibyteimg.com/obj/musically-maliva-obj/7b26288dc3676e3db4f07a4c86554ed4.png" width="180" height="180" alt="unsplash">
+        </div>
+
+
+        <div>
+          <strong>Instagram</strong>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHh9ViF0gZEibWmkpgu83gP87hefJ1j2tDZA&s" width="150" height="150" alt="unsplash">
+        
+        </div>
+
+
+        <div>
+          <strong>Pinterest</strong>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRS-meG8HDT-iFgfeMdVxdjT_zYLvMVrd8Nw&s" width="150" height="150" alt="unsplash">
+          
+        </div>
+        <div>
+          <strong>YouTube</strong>
+          <img src="https://play-lh.googleusercontent.com/6am0i3walYwNLc08QOOhRJttQENNGkhlKajXSERf3JnPVRQczIyxw2w3DxeMRTOSdsY" width="150" height="150" alt="unsplash">
+        </div>
+
+         <div>
+          <strong>YouTube</strong>
+          <img src="https://img.freepik.com/free-vector/new-2023-twitter-logo-x-icon-design_1017-45418.jpg?semt=ais_hybrid&w=740&q=80" width="150" height="150" alt="unsplash">
+        </div>
+        
+         <div>
+          <strong>Facebook</strong>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiXN9xSEe8unzPBEQOeAKXd9Q55efGHGB9BA&s" width="150" height="150" alt="unsplash">
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+</body>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+
+    function getStarted() {
+      const user = prompt("Hi User! What's your name?");
+      if (user) {
+        alert(`Welcome, ${user}! To you AI powered digital content creator platform `);
+      } else {
+        alert("No worries! You're always welcome here.");
+      }
+    }
+  </script>
+</body>
+</html>
