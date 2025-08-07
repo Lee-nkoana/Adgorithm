@@ -34,6 +34,15 @@ insert project description
    ```
 
 3. ## How to run
+### 1. Set the environment variable to allow OAuth over HTTP (for local development only)
+- **For Windows Command Prompt (CMD):**
+  ```cmd
+  set OAUTHLIB_INSECURE_TRANSPORT=1
+
+
+- **For Powershell (CMD):**
+$env:OAUTHLIB_INSECURE_TRANSPORT=1
+
 
    ```bash
    python manage.py migrate
@@ -56,6 +65,10 @@ insert project description
 
    python manage.py migrate
    ```
+
+5. Start the OAuth flow here:
+http://localhost:8000/auth/start
+
 
 ## 🧑‍💻 Contributing
 
