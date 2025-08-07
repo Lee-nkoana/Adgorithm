@@ -1,0 +1,208 @@
+import requests
+import os
+from typing import Optional
+import json
+
+class AdorithmClient:
+    
+    def __init__(self, api_key: Optional[str] = None):
+       
+        self.api_key = api_key or os.getenv("ADORITHM_API_KEY")
+        self.api_url = "https://api.shecodes.io/ai/v1/generate"
+        self.default_context = (
+            "You are Adorithm, an AI financial coach who helps women plan and save "
+            "for digital marketing campaigns. Be clear, helpful, and protective. "
+            "Provide specific, actionable advice with budget breakdowns when relevant."
+        )
+        
+        if not self.api_key:
+            raise ValueError(
+                "API key required. Set ADORITHM_API_KEY environment variable or pass it directly."
+            )
+    
+    def ask_adorithm(self, prompt: str, context: Optional[str] = None, 
+                     timeout: int = 30) -> dict:
+        """
+        Send a prompt to Adorithm and get a response.
+        
+        Args:
+            prompt: The user's question or request
+            context: Optional custom context (uses default if None)
+            timeout: Request timeout in seconds
+            
+        Returns:
+            dict with 'success', 'response', and optional 'error' keys
+        """
+        if not prompt.strip():
+            return {
+                "success": False,
+                "error": "Please provide a question or prompt."
+            }
+        
+        params = {
+            "prompt": prompt.strip(),
+            "context": context or self.default_context,
+            "key": self.api_key
+        }
+        
+        try:
+            response = requests.get(
+                self.api_url, 
+                params=params, 
+                timeout=timeout,
+                headers={'User-Agent': 'Adorithm-Client/1.0'}
+            )
+            response.raise_for_status()
+            
+            data = response.json()
+            output = data.get("output", "").strip()
+            
+            if not output:
+                return {
+                    "success": False,
+                    "error": "No response received from Adorithm."
+                }
+            
+            return {
+                "success": True,
+                "response": output
+            }
+            
+        except requests.exceptions.Timeout:
+            return {
+                "success": False,
+                "error": "Request timed out. Please try again."
+            }
+        except requests.exceptions.ConnectionError:
+            return {
+                "success": False,
+                "error": "Unable to connect to Adorithm service."
+            }
+        except requests.exceptions.HTTPError as e:
+            status_code = e.response.status_code
+            if status_code == 401:
+                error_msg = "Invalid API key. Please check your credentials."
+            elif status_code == 429:
+                error_msg = "Rate limit exceeded. Please wait before making more requests."
+            else:
+                error_msg = f"HTTP error {status_code}. Please try again later."
+            
+            return {
+                "success": False,
+                "error": error_msg
+            }
+        except json.JSONDecodeError:
+            return {
+                "success": False,
+                "error": "Invalid response format received."
+            }
+        except Exception as e:
+            return {
+                "success": False,
+                "error": f"Unexpected error: {str(e)}"
+            }
+
+def print_welcome():
+    """Print a styled welcome message."""
+    print("=" * 60)
+    print("🌟 Welcome to Adorithm")
+    print("Your AI Financial Coach for Digital Marketing Campaigns")
+    print("=" * 60)
+    print("\n💡 Tips:")
+    print("• Ask about campaign budgets, ROI planning, or cost optimization")
+    print("• Type 'help' for example questions")
+    print("• Type 'exit' or 'quit' to end the session")
+    print("-" * 60)
+
+def print_help():
+    """Print helpful example questions."""
+    print("\n📚 Example questions you can ask:")
+    print("• 'How much should I budget for a Facebook ad campaign?'")
+    print("• 'What's a good ROI target for Instagram advertising?'")
+    print("• 'Help me plan a $500 social media marketing budget'")
+    print("• 'How can I track my campaign spending effectively?'")
+    print("-" * 60)
+
+def format_response(response: str) -> str:
+    """Format the AI response for better readability."""
+    formatted = response.replace("• ", "\n• ").replace("1.", "\n1.").replace("2.", "\n2.")
+    return formatted.strip()
+
+def test_api_connection():
+    """Test if the API connection works."""
+    try:
+        client = AdorithmClient()
+        print("🧪 Testing API connection...")
+        result = client.ask_adorithm("Hello, are you working?")
+        
+        if result["success"]:
+            print("✅ API connection successful!")
+            print(f"Response: {result['response'][:100]}...")
+        else:
+            print(f"❌ API test failed: {result['error']}")
+        
+        return result["success"]
+    except Exception as e:
+        print(f"❌ Connection test error: {e}")
+        return False
+
+def main():
+    """Main interactive loop."""
+    try:
+        # Test API connection first
+        if not test_api_connection():
+            print("\n⚠️  API connection failed. Please check your setup.")
+            return 1
+        
+        
+        client = AdorithmClient()  
+        
+        print_welcome()
+        
+        while True:
+            try:
+                user_input = input("\n💬 You: ").strip()
+                
+                if user_input.lower() in ['exit', 'quit', 'bye']:
+                    print("\n👋 Thanks for using Adorithm! Happy campaigning!")
+                    break
+                
+                if user_input.lower() in ['help', '?']:
+                    print_help()
+                    continue
+                
+                if not user_input:
+                    print("❓ Please enter a question or type 'help' for examples.")
+                    continue
+                
+                print("\n🤔 Adorithm is thinking...")
+                
+                result = client.ask_adorithm(user_input)
+                
+                if result["success"]:
+                    print(f"\n🎯 Adorithm: {format_response(result['response'])}")
+                else:
+                    print(f"\n❌ Error: {result['error']}")
+                    
+            except KeyboardInterrupt:
+                print("\n\n👋 Session interrupted. Goodbye!")
+                break
+            except EOFError:
+                print("\n👋 Goodbye!")
+                break
+                
+    except ValueError as e:
+        print(f"❌ Configuration Error: {e}")
+        print("\n💡 To fix this:")
+        print("1. Get your API key from the service provider")
+        print("2. Set it as an environment variable: export ADORITHM_API_KEY='your_key'")
+        print("3. Or pass it directly when creating the client")
+        return 1
+    except Exception as e:
+        print(f"❌ Unexpected error starting Adorithm: {e}")
+        return 1
+    
+    return 0
+
+if __name__ == "__main__":
+    exit(main())
