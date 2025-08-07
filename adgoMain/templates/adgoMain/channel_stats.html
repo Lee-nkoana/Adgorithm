@@ -1,20 +1,20 @@
 <!-- adgoMain/templates/adgoMain/channel_stats.html -->
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Adgorithm - YouTube Stats</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>YouTube Channel Stats</h1>
     {% if error %}
-        <p style="color: red;">{{ error }}</p>
+    <p style="color: red">{{ error }}</p>
     {% else %}
-        <h2>{{ channel_stats.title }}</h2>
-        <p>Description: {{ channel_stats.description }}</p>
-        <p>Subscribers: {{ channel_stats.subscriber_count }}</p>
-        <p>Total Views: {{ channel_stats.view_count }}</p>
-        <p>Total Videos: {{ channel_stats.video_count }}</p>
+    <h2>{{ channel_stats.title }}</h2>
+    <p>Description: {{ channel_stats.description }}</p>
+    <p>Subscribers: {{ channel_stats.subscriber_count }}</p>
+    <p>Total Views: {{ channel_stats.view_count }}</p>
+    <p>Total Videos: {{ channel_stats.video_count }}</p>
     {% endif %}
-    <a href="{% url 'adgoMain:youtube_auth' %}">Authenticate with YouTube</a>
-</body>
+    <a href="{% url 'youtube_auth_start' %}">Authenticate with YouTube</a>
+  </body>
 </html>

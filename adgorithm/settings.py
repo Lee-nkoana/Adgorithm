@@ -19,6 +19,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 BASE_DIR = Path(__file__).resolve().parent.parent
 YOUTUBE_CREDENTIALS_FILE = BASE_DIR / 'credentials' / 'client_secrets_file.json'
 YOUTUBE_API_KEY = 'AIzaSyA5kC8RPpmBjEHTfgG8qIkxqbnJkMEqDlA'
+YOUTUBE_SCOPES = ['https://www.googleapis.com/auth/youtube.readonly']
+YOUTUBE_REDIRECT_URI = 'http://localhost:8000/oauth2callback/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
