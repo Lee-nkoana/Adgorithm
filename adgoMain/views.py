@@ -5,6 +5,7 @@ from google_auth_oauthlib.flow import Flow
 from googleapiclient.discovery import build
 import google.oauth2.credentials
 from django.contrib.auth import authenticate, login, logout
+from datetime import datetime, timedelta
 
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
@@ -15,7 +16,8 @@ from django.contrib.auth.models import User
 
 from django import forms
 
-SCOPES = ['https://www.googleapis.com/auth/youtube.readonly']
+SCOPES = ['https://www.googleapis.com/auth/youtube.readonly',
+          'https://www.googleapis.com/auth/yt-analytics.readonly']
 
 def index(request):
     return render(request, "adgoMain/index.html")
@@ -66,19 +68,21 @@ def channel_stats(request):
 
     creds = google.oauth2.credentials.Credentials(**creds_data)
 
+    # YouTube Data API
     youtube = build('youtube', 'v3', credentials=creds)
+    youtube_analytics = build('youtubeAnalytics', 'v2', credentials=creds)
 
-    channel_id = 'UCSP6Je0q2Ay6OaLkU1t6eHQ'
+    # Get channel info
     response = youtube.channels().list(
         part='snippet,statistics',
-        id=channel_id
+        mine=True  # Use authorized user's channel
     ).execute()
 
     if 'items' not in response or not response['items']:
-        context = {'error': 'No channel data found'}
-        return render(request, 'adgoMain/channel_stats.html', context)
+        return render(request, 'adgoMain/channel_stats.html', {'error': 'No channel data found'})
 
     item = response['items'][0]
+    channel_id = item['id']
     stats = {
         'title': item['snippet']['title'],
         'description': item['snippet']['description'],
@@ -87,12 +91,54 @@ def channel_stats(request):
         'video_count': item['statistics'].get('videoCount', 'N/A'),
     }
 
+    # Date range: last 30 days
+    end_date = datetime.today().strftime('%Y-%m-%d')
+    start_date = (datetime.today() - timedelta(days=30)).strftime('%Y-%m-%d')
+
+    # Get daily metrics
+    analytics_response = youtube_analytics.reports().query(
+        ids='channel==MINE',
+        startDate=start_date,
+        endDate=end_date,
+        metrics='views,estimatedMinutesWatched,averageViewDuration,subscribersGained,subscribersLost',
+        dimensions='day',
+        sort='day'
+    ).execute()
+
+    daily_data = analytics_response.get('rows', [])
+
+    # Top 5 videos by watch time
+    top_videos = youtube_analytics.reports().query(
+        ids='channel==MINE',
+        startDate=start_date,
+        endDate=end_date,
+        metrics='estimatedMinutesWatched,views,averageViewDuration',
+        dimensions='video',
+        sort='-estimatedMinutesWatched',
+        maxResults=5
+    ).execute()
+
+    # Annotate top video data with video URLs
+    top_videos_data = []
+    for row in top_videos.get('rows', []):
+        video_id, minutes_watched, views, avg_view_duration = row
+        top_videos_data.append({
+            'video_id': video_id,
+            'url': f'https://www.youtube.com/watch?v={video_id}',
+            'watch_time': minutes_watched,
+            'views': views,
+            'avg_view_duration': avg_view_duration
+        })
+
     context = {
         'channel_stats': stats,
-        'error': None,
+        'daily_analytics': daily_data,
+        'top_videos': top_videos_data,
+        'error': None
     }
 
     return render(request, 'adgoMain/channel_stats.html', context)
+
 
 def login_view(request):
     if request.method == "POST":
