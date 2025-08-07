@@ -17,7 +17,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-YOUTUBE_CREDENTIALS_FILE = BASE_DIR / 'credentials' / 'client_secret.json'
+YOUTUBE_CREDENTIALS_FILE = BASE_DIR / 'credentials' / 'client_secrets_file.json'
 YOUTUBE_API_KEY = 'AIzaSyA5kC8RPpmBjEHTfgG8qIkxqbnJkMEqDlA'
 
 # Quick-start development settings - unsuitable for production
