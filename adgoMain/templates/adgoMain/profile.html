@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Adgorithm | Campaign Assistant for Creators</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <title>{% block title %}Adgorithm | Campaign Assistant for Creators{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'adgoMain/profile.css' %}"/>
 
   
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
@@ -16,11 +17,11 @@
 <header>
 
     <ul class="nav-links">
-      <li><a href="index.html">Welcome</a></li>
+      <li><a href="{% url 'index' %}">Welcome</a></li>
 
-      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
         
-      <li><a href="platforms.html">Platforms</a></li>
+      <li><a href="{% url 'platforms' %}">Platforms</a></li>
 
       <li><a href="media profile.html">Media Profile</a></li>
 

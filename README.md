@@ -1,6 +1,6 @@
 # Adgorithm - AI powered digital platform for marketing and strate
 
-insert project description
+We are working on Adgorithm, an AI-powered, two-in-one platform designed to help content creators, social media managers/marketers, freelancers, and entrepreneurs market their business on social media.
 
 ## 🚀 Features
 
@@ -34,29 +34,32 @@ insert project description
    ```
 
 3. ## How to run
+
 ### 1. Set the environment variable to allow OAuth over HTTP (for local development only)
+
 - **For Windows Command Prompt (CMD):**
+
   ```cmd
   set OAUTHLIB_INSECURE_TRANSPORT=1
 
+  ```
 
 - **For Powershell (CMD):**
-$env:OAUTHLIB_INSECURE_TRANSPORT=1
+  $env:OAUTHLIB_INSECURE_TRANSPORT=1
 
+  ```bash
+  python manage.py migrate
 
-   ```bash
-   python manage.py migrate
+  python manage.py runserver
+  ```
 
-   python manage.py runserver
-   ```
+  or
 
-   or
+  ```bash
+  python3 manage.py migrate
 
-   ```bash
-   python3 manage.py migrate
-
-   python3 manage.py runserver
-   ```
+  python3 manage.py runserver
+  ```
 
 4. ## Migrations
 
@@ -67,8 +70,7 @@ $env:OAUTHLIB_INSECURE_TRANSPORT=1
    ```
 
 5. Start the OAuth flow here:
-http://localhost:8000/auth/start
-
+   http://localhost:8000/auth/start
 
 ## 🧑‍💻 Contributing
 

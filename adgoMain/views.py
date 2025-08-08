@@ -191,4 +191,11 @@ def register(request):
     else:
         return render(request, "adgoMain/register.html")
 
-    #creating a new listing
+def dashboard(request):
+    return render(request, "adgoMain/dashboard.html")
+
+def platforms(request):
+    return render(request, "adgoMain/platforms.html")
+
+def profile(request):
+    return render(request, "adgoMain/profile.html")
