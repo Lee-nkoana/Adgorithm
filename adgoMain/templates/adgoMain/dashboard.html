@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adgorithm | Campaign Assistant for Creators</title>
+  <link rel="stylesheet" href="styles.css"/>
+
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+<header>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Welcome</a></li>
+
+      <li><a href="dashboard.html">Dashboard</a></li>
+        
+      <li><a href="platforms.html">Platforms</a></li>
+
+      <li><a href="media profile.html">Media Profile</a></li>
+
+      <li><a href="assistant.html">Assistant</a></li>
+
+       <li><a href="secureaccount.html">Secure Account</a></li>
+      
+      
+      </ul>
+    </ul>
+  </header>
+
+  <main>
+    <section class="intro" data-aos="fade-up">
+      <h2>Hello User! </h2>
+      
+      <button onclick="getStarted()">Discover key features</button>
+    </section>
+
+    <section class="main-image" data-aos="zoom-in">
+      <img src="https://i.pinimg.com/736x/7f/49/37/7f49375f87eeac217b58f602ad48ae2e.jpg" alt="Content Creator">
+      <p class="credit">>
+    </section>
+
+    
+
+    <section class="features" data-aos="fade-up">
+      <h3>Discover Key Features </h3>
+      <div class="features-grid">
+
+        <div>
+          <strong>Budgeting & savings</strong>
+          <img src="https://i.pinimg.com/736x/b6/f1/91/b6f1919194d0e28760adb97b1f3ee068.jpg" width="150" height="150" alt="unsplash">
+          <p>Save and budget for upcoming content or business campaigns.</p>
+        </div>
+
+
+        <div>
+          <strong>AI-powered content strategy</strong>
+          <img src="https://i.pinimg.com/736x/f6/69/e8/f669e8b39df348c564401607e8a9776d.jpg" width="150" height="150" alt="unsplash">
+          <p>Generate AI-powered content strategies.</p>
+        </div>
+
+
+        <div>
+          <strong>Campaign tracking & ROI</strong>
+          <img src="https://i.pinimg.com/1200x/c2/47/8a/c2478a4db9fa23cad8f16c7a3a410162.jpg" width="150" height="150" alt="unsplash">
+          <p>Track campaign expenses and returns</p>
+        </div>
+
+
+        <div>
+          <strong>Financial & digital security</strong>
+          <img src="https://i.pinimg.com/736x/59/53/a4/5953a46fe7684a2807f69f6c4a942421.jpg" width="150" height="150" alt="unsplash">
+          <p>Protect your finances and digital identity with cybersecurity tips and scam protection.</p>
+        </div>
+
+
+      </div>
+    </section>
+
+  </main>
+</body>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+
+    function getStarted() {
+      const user = prompt("Hi User! What's your name?");
+      if (user) {
+        alert(`Welcome, ${user}! To you AI powered digital content creator platform `);
+      } else {
+        alert("No worries! You're always welcome here.");
+      }
+    }
+  </script>
+</body>
+</html>
