@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adgorithm | Campaign Assistant for Creators</title>
+  <link rel="stylesheet" href="styles.css"/>
+
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+<header>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Welcome</a></li>
+
+      <li><a href="dashboard.html">Dashboard</a></li>
+        
+      <li><a href="platforms.html">Platforms</a></li>
+
+      <li><a href="media profile.html">Media Profile</a></li>
+
+      <li><a href="assistant.html">Assistant</a></li>
+
+       <li><a href="secureaccount.html">Secure Account</a></li>
+
+      
+      
+      </ul>
+    </ul>
+  </header>
+
+  <main>
+    <section class="intro" data-aos="fade-up">
+      <h2>Secure your account </h2>
+      <p>
+        Secure your account now to protect it from unauthorized access. This is a secure way to protect your account from hackers and other malicious users.
+      </p>
+      <button onclick="getStarted()">Secure</button>
+    </section>
+
+    <section class="main-image" data-aos="fade-in">
+      <img src="https://i.pinimg.com/1200x/b6/1d/25/b61d25a2a5f8126268c35f790c232865.jpg" alt="Content Creator">
+      <p class="credit">>
+      </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+
+    function getStarted() {
+      const user = prompt("Hi User! What's your name?");
+      if (user) {
+        alert(`Welcome, ${user}! To you AI powered digital content creator platform `);
+      } else {
+        alert("No worries! You're always welcome here.");
+      }
+    }
+  </script>
+</body>
+</html>
