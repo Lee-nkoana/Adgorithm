@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>{% block title %}Adgorithm | Campaign Assistant for Creators{% endblock %}</title>
-  <link rel="stylesheet" href="{% static 'adgoMain/profile.css' %}"/>
+  <link rel="stylesheet" href="{% static 'users/profile.css' %}"/>
 
   
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
@@ -35,7 +35,7 @@
     <section class="intro" data-aos="fade-up">
       <h2>User Social Media Platform </h2>
       
-      <button onclick="getStarted()">Coose a social media platform!</button>
+      <button onclick="getStarted()">Choose a social media platform!</button>
     </section>
 
     <section class="main-image" data-aos="zoom-in">
@@ -98,7 +98,7 @@
     function getStarted() {
       const user = prompt("Hi User! What's your name?");
       if (user) {
-        alert(`Welcome, ${user}! To you AI powered digital content creator platform `);
+        alert(`Welcome, ${user}! To your AI powered digital content creator platform `);
       } else {
         alert("No worries! You're always welcome here.");
       }

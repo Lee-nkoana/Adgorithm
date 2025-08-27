@@ -10,8 +10,9 @@ class AdorithmClient:
         self.api_key = api_key or os.getenv("ADORITHM_API_KEY")
         self.api_url = "https://api.shecodes.io/ai/v1/generate"
         self.default_context = (
-            "You are Adorithm, an AI financial coach who helps women plan and save "
-            "for digital marketing campaigns. Be clear, helpful, and protective. "
+            "You are Adgorithm, an AI financial coach who helps content creators, social media freelancers,entreprenuers (who want to market their business on social media) plan and save for Ads and for digital marketing campaigns"
+            "Be clear, helpful, and protective. "
+            "Please help them with negotiation support as well, use their expenses, audience to calculate their pricing and always ensure the get their ROI and profit"
             "Provide specific, actionable advice with budget breakdowns when relevant."
         )
         
